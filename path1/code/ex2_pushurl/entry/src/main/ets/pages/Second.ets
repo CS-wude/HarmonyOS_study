@@ -2,8 +2,9 @@ import router from '@ohos.router';
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'Index页面'
+struct Second {
+  @State message: string = 'Second页面'
+  @State src: string = router.getParams()?.['src'];
 
   build() {
     Row() {
@@ -12,15 +13,13 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
 
-        Button('跳转')
+        Text(this.src)
+          .fontSize(30)
+
+        Button('返回')
           .fontSize(40)
           .onClick(() => {
-            router.pushUrl({
-              url: 'pages/Second',
-              params: {
-                src: 'Index传来的数据',
-              }
-            })
+            router.back();
           })
       }
       .width('100%')
