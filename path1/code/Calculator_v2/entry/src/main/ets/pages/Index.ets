@@ -13,34 +13,35 @@ struct Index {
 
   build() {
 
-      Column() {
-        Text()
-          .width('100%')
-          .height(80)
-          .backgroundColor(Color.Orange)
-        Grid(){
-          ForEach(this.btTexts,(value)=>{
-            GridItem(){
-              this.BtItem(value)
-            }
-            .backgroundColor(Color.Gray)
-            .rowStart(value == '=' ? 3:null)
-            .rowEnd(value == '=' ? 4:null)
-            .columnStart(value == '0' ? 0:null)
-            .columnEnd(value == '0' ? 1:null)
-            .onClick(() => {
-              this.onBtClick(value)
-            })
-          })
-        }
-        .columnsTemplate('1fr 1fr 1fr 1fr')
-        .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
-        .columnsGap(2)
-        .rowsGap(2)
-        .aspectRatio(1)
+    Column() {
+      Text(this.input)
+        .fontSize(30)
         .width('100%')
+        .height(80)
+        .backgroundColor(Color.Orange)
+      Grid(){
+        ForEach(this.btTexts,(value)=>{
+          GridItem(){
+            this.BtItem(value)
+          }
+          .backgroundColor(Color.Gray)
+          .rowStart(value == '=' ? 3:null)
+          .rowEnd(value == '=' ? 4:null)
+          .columnStart(value == '0' ? 0:null)
+          .columnEnd(value == '0' ? 1:null)
+          .onClick(() => {
+            this.onBtClick(value)
+          })
+        })
       }
+      .columnsTemplate('1fr 1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(2)
+      .rowsGap(2)
+      .aspectRatio(1)
       .width('100%')
+    }
+    .width('100%')
     .height('100%')
     .justifyContent(FlexAlign.End)
 
@@ -56,17 +57,17 @@ struct Index {
     //var split=[]
     switch(value){
       case 'ce':
-      this.input = ''
-      break;
+        this.input = ''
+        break;
       case 'c':
-      this.input = this.input.substring(0, this.input.length - 1)
-      break;
+        this.input = this.input.substring(0, this.input.length - 1)
+        break;
       case '=':
-      this.input = this.calculate(this.transInputToSplit(this.input))
-      break;
+        this.input = this.calculate(this.transInputToSplit(this.input))
+        break;
       default:
-      this.input = this.input + value
-      break;
+        this.input = this.input + value
+        break;
     }
   }
 
@@ -115,7 +116,7 @@ struct Index {
       switch (symbol){
         case '+':
           result=num1+num2
-        break;
+          break;
         case '-':
           result=num1-num2
           break;
